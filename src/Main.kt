@@ -1,5 +1,4 @@
 /*
-Created by Syed Bipul Rahman
 @author: Syed Bipul Rahman
  */
 
@@ -7,8 +6,10 @@ Created by Syed Bipul Rahman
 fun main() {
     //   println(factorial(10))
 
-    println(factloop(5))
+   // println(factloop(5))
 
+
+    printer(20)
 }
 
 //factorial with recursive function
@@ -38,3 +39,13 @@ fun factloop(n: Long): Long {
 
 //Tail recursion- Recursive call is the very last call in a recursive funtion.
 //that means nothing is left after the recursive call.
+//Tail recursive functions are consider better than non-tail recursive function
+//tail recursive can be optimized by the compiler
+
+fun printer(n: Int){
+    if (n<=0)
+        return
+    println("number = $n")
+    printer(n-1)
+
+}
