@@ -2,25 +2,22 @@
 @author: Syed Bipul Rahman
  */
 
-
 fun main() {
     //   println(factorial(10))
+    // println(factloop(5))
+    // printer(20)
 
-   // println(factloop(5))
-
-
-    printer(20)
+    println(tailFactiorial(5, 1))
 }
 
 //factorial with recursive function
 //neet much more memory
-fun factorial(n: Int): Long {
+fun factorial(n: Long): Long {
     return if (n <= 1) {
         1
     } else {
         n * factorial(n - 1)
     }
-
 
 }
 
@@ -42,10 +39,23 @@ fun factloop(n: Long): Long {
 //Tail recursive functions are consider better than non-tail recursive function
 //tail recursive can be optimized by the compiler
 
-fun printer(n: Int){
-    if (n<=0)
+fun printer(n: Int) {
+    if (n <= 0)
         return
     println("number = $n")
-    printer(n-1)
+    printer(n - 1)
 
 }
+
+//Important Note: not all recursive functions can make tail recursive*
+
+tailrec fun tailFactiorial(n: Long, total: Long): Long {
+    val tmp = n * total
+    return if (n <= 1) {
+        tmp
+    } else {
+        tailFactiorial(n - 1, tmp)
+    }
+
+}
+
