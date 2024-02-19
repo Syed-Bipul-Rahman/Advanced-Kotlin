@@ -9,17 +9,19 @@ fun main() {
     val trout = Vertebrate.Fish(lifeSpan = 5.5, freshwater = true)
 
 
-    val cow=Vertebrate.Mamal(false,15.0)
-    val eagle=Vertebrate.Bird(30.0)
+    val cow = Vertebrate.Mamal(false, 15.0)
+    val eagle = Vertebrate.Bird(30.0)
 
     //cross two animal🙈
 //    println(toad cross trout)
 
-   // println(cow cross eagle)
+    // println(cow cross eagle)
 
     println(eagle cross trout)
 
 }
+
+// a sealed class is a special type of class that represents a restricted hierarchy in which each subclass must be declared within the same file where the sealed class is declared.
 
 //Sealed classes and interfaces represent restricted class hierarchies that provide more control over inheritance.
 // All direct subclasses of a sealed class are known at compile time.
@@ -51,11 +53,41 @@ sealed class Vertebrate(
 
     infix fun cross(vertebrate: Vertebrate): Vertebrate {
         return GenericVertebrate(
-            name = "Generic ${this.javaClass.name}/${vertebrate.javaClass.name}".replace("Vertebrate$",""),
+            name = "Generic ${this.javaClass.name}/${vertebrate.javaClass.name}".replace("Vertebrate$", ""),
             isCoolBlooded = !(!this.isCoolBlooded && !vertebrate.isCoolBlooded),
             lifeSpan = this.lifeSpan + vertebrate.lifeSpan
         )
     }
 
+
+}
+
+//sealed interface
+sealed interface Plant {
+    val name: String
+    val height: Double
+
+    interface Gymno : Plant {
+        infix fun cross(plant: Plant): Plant
+
+    }
+
+    interface Angio : Plant {
+        infix fun bread(plant: Plant): Plant
+
+    }
+
+}
+
+//sealed class is very similar to enum classes
+class Mango : Plant.Angio {
+    override fun bread(plant: Plant): Plant {
+        TODO("Not yet implemented")
+    }
+
+    override val name: String
+        get() = TODO("Not yet implemented")
+    override val height: Double
+        get() = TODO("Not yet implemented")
 
 }
