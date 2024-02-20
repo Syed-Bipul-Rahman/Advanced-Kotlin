@@ -5,7 +5,7 @@
 
 fun main() {
 
-    val toad = Vertebrate.Amphibian(lifeSpan = 11.5)
+    val toad = Amp(lifeSpan = 11.5)
     val trout = Vertebrate.Fish(lifeSpan = 5.5, freshwater = true)
 
 
@@ -17,7 +17,25 @@ fun main() {
 
     // println(cow cross eagle)
 
-    println(eagle cross trout)
+    //println(eagle cross trout)
+
+    val crosed = eagle cross cow
+
+    when (crosed) {
+        is Vertebrate.Fish -> println()
+        is Amp -> TODO()
+        is Vertebrate.Bird -> TODO()
+        is Vertebrate.Mamal -> TODO()
+        is Vertebrate.Reptile -> TODO()
+        is CustomVertebrate-> TODO()
+        else -> println()
+    }
+
+
+
+simulation(fun (p1:Int,p2)=p1+p2)
+
+
 
 }
 
@@ -91,3 +109,14 @@ class Mango : Plant.Angio {
         get() = TODO("Not yet implemented")
 
 }
+
+fun simulation(op:NumaricOparation){
+    println(op(10,20))
+}
+
+//typealias is use to introduce class in short word or character sequences.
+//typealias
+typealias Amp=Vertebrate.Amphibian
+
+//for calculation
+typealias NumaricOparation=(Int,Int)->Int
